@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "336457359864",
+    "firebase_url": "https://doorstep-578ca-default-rtdb.firebaseio.com",
+    "project_id": "doorstep-578ca",
+    "storage_bucket": "doorstep-578ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336457359864:android:da21525792326d8b8cf60d",
+        "android_client_info": {
+          "package_name": "com.example.car_service_wecarcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336457359864-dgk4aonqs4s7ajbt6mrj9r7n4t1ei18m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGuNH6dhKn7Dn7C_ZnSybVr3WQtYo3B6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336457359864-dgk4aonqs4s7ajbt6mrj9r7n4t1ei18m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
