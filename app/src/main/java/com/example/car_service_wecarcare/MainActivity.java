@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+   doorStep
 
         recyclerView = (RecyclerView) findViewById(R.id.dsrv);
         recyclerView.setLayoutManager( new LinearLayoutManager(this));
@@ -51,5 +52,7 @@ public class MainActivity extends AppCompatActivity {
         
 
         return super.onCreateOptionsMenu(menu);
+
+      
     }
 }
