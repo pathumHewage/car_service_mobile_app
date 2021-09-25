@@ -1,5 +1,7 @@
 package com.example.car_service_wecarcare;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +44,7 @@ public class lcMainAdapter extends FirebaseRecyclerAdapter<lcMainModel,lcMainAda
 
 
     @Override
-    protected void onBindViewHolder(@NonNull @NotNull myViewHolder holder, int position, @NonNull @NotNull lcMainModel model) {
+    protected void onBindViewHolder(@NonNull @NotNull myViewHolder holder,final int position, @NonNull @NotNull lcMainModel model) {
         holder.sertype.setText(model.getSertype());
         holder.cartype.setText(model.getCartype());
         holder.fuelexpert.setText(model.getFuelexpert());
@@ -57,7 +59,7 @@ public class lcMainAdapter extends FirebaseRecyclerAdapter<lcMainModel,lcMainAda
                 .error(R.drawable.common_google_signin_btn_icon_dark_normal)
                 .into(holder.img);
 
-        //update
+        //update Operation
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +125,34 @@ public class lcMainAdapter extends FirebaseRecyclerAdapter<lcMainModel,lcMainAda
         });
 
 
+        //Delete Operation
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(holder.sertype.getContext());
+                builder.setTitle("Are You Sure?");
+                builder.setMessage("Deleted data can't be Undo");
 
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //After click delete button dlete data
+                        FirebaseDatabase.getInstance().getReference().child("vehicles")
+                                .child(getRef(position).getKey()).removeValue();
+
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(holder.sertype.getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.show();
+
+            }
+        });
 
 
 
