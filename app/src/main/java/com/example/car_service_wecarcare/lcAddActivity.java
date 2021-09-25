@@ -45,6 +45,7 @@ public class lcAddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 insertData();
                 clearAll();
+                //Call clear field function
             }
         });
 
