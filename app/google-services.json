@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "336457359864",
-    "firebase_url": "https://doorstep-578ca-default-rtdb.firebaseio.com",
-    "project_id": "doorstep-578ca",
-    "storage_bucket": "doorstep-578ca.appspot.com"
+    "project_number": "364701425251",
+    "project_id": "carserviceapp-fb926",
+    "storage_bucket": "carserviceapp-fb926.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:336457359864:android:da21525792326d8b8cf60d",
+        "mobilesdk_app_id": "1:364701425251:android:4d9edc6c75ec1c6dcf2256",
         "android_client_info": {
           "package_name": "com.example.car_service_wecarcare"
         }
       },
       "oauth_client": [
         {
-          "client_id": "336457359864-dgk4aonqs4s7ajbt6mrj9r7n4t1ei18m.apps.googleusercontent.com",
+          "client_id": "364701425251-ekbt84ghuv4e6et5ct0ujlepfg6c9gt4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCGuNH6dhKn7Dn7C_ZnSybVr3WQtYo3B6Y"
+          "current_key": "AIzaSyBbIzCXXBFmdaFe5qmI9ggyJH-Hd3vGnKs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "336457359864-dgk4aonqs4s7ajbt6mrj9r7n4t1ei18m.apps.googleusercontent.com",
+              "client_id": "364701425251-ekbt84ghuv4e6et5ct0ujlepfg6c9gt4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
