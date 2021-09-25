@@ -3,7 +3,10 @@ package com.example.car_service_wecarcare;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,8 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.FirebaseDatabase;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.ViewHolder;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -46,6 +57,76 @@ public class lcMainAdapter extends FirebaseRecyclerAdapter<lcMainModel,lcMainAda
                 .error(R.drawable.common_google_signin_btn_icon_dark_normal)
                 .into(holder.img);
 
+        //update
+        holder.btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final DialogPlus dialogPlus = DialogPlus.newDialog(holder.img.getContext())
+                        .setContentHolder(new ViewHolder(R.layout.lcupdate_popup))
+                        .setExpanded(true,1700)
+                        .create();
+
+                //dialogPlus.show();
+
+                View view = dialogPlus.getHolderView();
+
+                EditText sertype = view.findViewById(R.id.sertypetext);
+                EditText cartype = view.findViewById(R.id.cartypetext);
+                EditText fuelexpert = view.findViewById(R.id.fuelexperttext);
+                EditText picktime = view.findViewById(R.id.picktimetext);
+                EditText delitime = view.findViewById(R.id.delitimetext);
+                EditText extrachar = view.findViewById(R.id.extrachartext);
+
+                Button btnUpdate = view.findViewById(R.id.btnUpdate);
+
+                sertype.setText(model.getSertype());
+                cartype.setText(model.getCartype());
+                fuelexpert.setText(model.getFuelexpert());
+                picktime.setText(model.getPicktime());
+                delitime.setText(model.getDelitime());
+                extrachar.setText(model.getExtrachar());
+
+                dialogPlus.show();
+
+                btnUpdate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Map<String,Object> map = new HashMap<>();
+                        map.put("sertype",sertype.getText().toString());
+                        map.put("cartype",cartype.getText().toString());
+                        map.put("fuelexpert",fuelexpert.getText().toString());
+                        map.put("picktime",picktime.getText().toString());
+                        map.put("delitime",delitime.getText().toString());
+                        map.put("extrachar",extrachar.getText().toString());
+
+                        FirebaseDatabase.getInstance().getReference().child("vehicles")
+                                .child(getRef(position).getKey()).updateChildren(map)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(holder.sertype.getContext(), "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                                        dialogPlus.dismiss();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(Exception e) {
+                                        Toast.makeText(holder.sertype.getContext(), "Error Occured On Update Data", Toast.LENGTH_SHORT).show();
+                                        dialogPlus.dismiss();
+                                    }
+                                });
+
+                    }
+                });
+
+            }
+        });
+
+
+
+
+
+
     }
 
     @NonNull
@@ -63,6 +144,8 @@ public class lcMainAdapter extends FirebaseRecyclerAdapter<lcMainModel,lcMainAda
         CircleImageView img;
         TextView sertype, cartype, fuelexpert, picktime, delitime, extrachar, surl;
 
+        Button btnEdit, btnDelete;
+
         public myViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
@@ -73,6 +156,9 @@ public class lcMainAdapter extends FirebaseRecyclerAdapter<lcMainModel,lcMainAda
             picktime = (TextView)itemView.findViewById(R.id.picktimetext);
             delitime = (TextView)itemView.findViewById(R.id.delitimetext);
             extrachar = (TextView)itemView.findViewById(R.id.extrachartext);
+
+            btnEdit = (Button)itemView.findViewById(R.id.btnEdit);
+            btnDelete = (Button)itemView.findViewById(R.id.btnDelete);
 
 
         }
