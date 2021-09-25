@@ -7,6 +7,7 @@
     app:cardCornerRadius="6dp"
     android:elevation="6dp"
     app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/black"
     >
 
     <RelativeLayout
@@ -18,7 +19,6 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@mipmap/ic_launcher"
-            android:layout_centerVertical="true"
             android:id="@+id/img1"
             app:civ_border_width="2dp"
             app:civ_border_color="#FF000000"/>
@@ -60,6 +60,102 @@
             android:layout_below="@+id/phoneNotext"
             android:layout_marginLeft="10dp"
             />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/brandtext"
+            android:text="Brand"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="#000"
+            android:layout_toRightOf="@+id/img1"
+            android:layout_below="@+id/locationtext"
+            android:layout_marginLeft="10dp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/vModeltext"
+            android:text="Vehicle Model"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="#000"
+            android:layout_toRightOf="@+id/img1"
+            android:layout_below="@+id/brandtext"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/vMaketext"
+            android:text="Vehicle Make"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="#000"
+            android:layout_toRightOf="@+id/img1"
+            android:layout_below="@+id/vModeltext"
+            android:layout_marginLeft="10dp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fuelTypetext"
+            android:text="Fuel Type"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="#000"
+            android:layout_toRightOf="@+id/img1"
+            android:layout_below="@+id/vMaketext"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/datetext"
+            android:text="Request Date"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="#000"
+            android:layout_toRightOf="@+id/img1"
+            android:layout_below="@+id/fuelTypetext"
+            android:layout_marginLeft="10dp"/>
+
+
+
+
+
+
+        <LinearLayout
+
+            android:layout_below="@id/datetext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:textAllCaps="false"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/edit_design"
+                android:id="@+id/btnEdit"/>
+
+            <Button
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textAllCaps="false"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/delete_design"
+                android:id="@+id/btnDelete"/>
+
+
+
+        </LinearLayout>
 
 
     </RelativeLayout>
