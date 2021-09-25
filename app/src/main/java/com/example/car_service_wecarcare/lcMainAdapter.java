@@ -56,7 +56,7 @@ public class lcMainAdapter extends FirebaseRecyclerAdapter<lcMainModel,lcMainAda
                 .load(model.getSurl())
                 .placeholder(R.drawable.common_google_signin_btn_icon_dark)
                 .circleCrop()
-                .error(R.drawable.common_google_signin_btn_icon_dark_normal)
+                .error(R.drawable.cari)
                 .into(holder.img);
 
         //update Operation
@@ -101,7 +101,7 @@ public class lcMainAdapter extends FirebaseRecyclerAdapter<lcMainModel,lcMainAda
                         map.put("delitime",delitime.getText().toString());
                         map.put("extrachar",extrachar.getText().toString());
 
-                        FirebaseDatabase.getInstance().getReference().child("vehicles")
+                        FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/").getReference().child("vehicles")
                                 .child(getRef(position).getKey()).updateChildren(map)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
@@ -137,7 +137,7 @@ public class lcMainAdapter extends FirebaseRecyclerAdapter<lcMainModel,lcMainAda
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //After click delete button dlete data
-                        FirebaseDatabase.getInstance().getReference().child("vehicles")
+                        FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/").getReference().child("vehicles")
                                 .child(getRef(position).getKey()).removeValue();
 
                     }

@@ -67,7 +67,7 @@ public class lcAddActivity extends AppCompatActivity {
         map.put("delitime",delitime.getText().toString());
         map.put("extrachar",extrachar.getText().toString());
 
-        FirebaseDatabase.getInstance().getReference().child("vehicles").push()
+        FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/").getReference().child("vehicles").push()
                 .setValue(map)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

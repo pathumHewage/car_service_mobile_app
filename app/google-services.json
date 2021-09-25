@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "874740003545",
-    "firebase_url": "https://car-service-wecarcare-default-rtdb.firebaseio.com",
-    "project_id": "car-service-wecarcare",
-    "storage_bucket": "car-service-wecarcare.appspot.com"
+    "project_number": "364701425251",
+    "project_id": "carserviceapp-fb926",
+    "storage_bucket": "carserviceapp-fb926.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:874740003545:android:69cb9d13350c77b59b44c8",
+        "mobilesdk_app_id": "1:364701425251:android:4d9edc6c75ec1c6dcf2256",
         "android_client_info": {
           "package_name": "com.example.car_service_wecarcare"
         }
       },
       "oauth_client": [
         {
-          "client_id": "874740003545-f7mtbhqrv7mu8n3b59aa5m2jfpncdqlu.apps.googleusercontent.com",
+          "client_id": "364701425251-ekbt84ghuv4e6et5ct0ujlepfg6c9gt4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDiPa9qCLOa6PvyaGbf1p9Rg3QOgTmcdX4"
+          "current_key": "AIzaSyBbIzCXXBFmdaFe5qmI9ggyJH-Hd3vGnKs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "874740003545-f7mtbhqrv7mu8n3b59aa5m2jfpncdqlu.apps.googleusercontent.com",
+              "client_id": "364701425251-ekbt84ghuv4e6et5ct0ujlepfg6c9gt4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
