@@ -21,39 +21,21 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     MainApAdapter  mainApAdapter;
    // TextView appHome;
-
     FloatingActionButton floatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-    /*  appHome =(TextView)findViewById(R.id.textView3);
-        appHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,addApActivity.class);
-                startActivity(intent);
-            }
-        });
-*/
-
-
         recyclerView = (RecyclerView) findViewById(R.id.aprv);
         recyclerView.setLayoutManager( new LinearLayoutManager(this));
-
-
         recyclerView.setLayoutManager(new CustomLinearLayoutManager(this));
-
-
 
         FirebaseRecyclerOptions<MainApModel> options =
                 new FirebaseRecyclerOptions.Builder<MainApModel>()
-                        .setQuery(FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/").getReference().child("appoinment"), MainApModel.class)
-                        .build();
-
+                        .setQuery(FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/")
+                                .getReference().child("appoinment"), MainApModel.class)
+                                .build();
         mainApAdapter = new MainApAdapter(options);
         recyclerView.setAdapter(mainApAdapter);
 
@@ -62,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,addApActivity.class));
-
             }
         });
 
@@ -83,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
+        //search
         getMenuInflater().inflate(R.menu.searchap,menu);
         MenuItem item = menu.findItem(R.id.search);
         SearchView searchView = (SearchView)item.getActionView();
@@ -100,21 +82,19 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
         return super.onCreateOptionsMenu(menu);
     }
-
     private void txtSearch(String str)
     {
+        //search by vehicle name
         FirebaseRecyclerOptions<MainApModel> options =
                 new FirebaseRecyclerOptions.Builder<MainApModel>()
-                        .setQuery(FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/").getReference().child("appoinment").orderByChild("vehicleName").startAt(str).endAt(str+"~"), MainApModel.class)
+                        .setQuery(FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/")
+                                .getReference().child("appoinment").orderByChild("vehicleName").startAt(str).endAt(str+"~"), MainApModel.class)
                         .build();
 
         mainApAdapter = new MainApAdapter(options);
         mainApAdapter.startListening();
         recyclerView.setAdapter(mainApAdapter);
-
     }
 }

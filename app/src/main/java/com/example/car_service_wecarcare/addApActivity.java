@@ -92,7 +92,7 @@ public class addApActivity extends AppCompatActivity {
 
 
     }
-
+    //insert Data
     private void insertData()
     {
         Map<String,Object> map =new HashMap<>();
@@ -103,9 +103,8 @@ public class addApActivity extends AppCompatActivity {
         map.put("appointmentTime",appointmentTime.getText().toString());
         map.put("anySpecialInstruction",anySpecialInstruction.getText().toString());
 
-
-
-        FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/").getReference().child("appoinment").push()
+        FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/").
+                getReference().child("appoinment").push()
                 .setValue(map)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

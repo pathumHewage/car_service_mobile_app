@@ -52,17 +52,14 @@ public class MainApAdapter extends FirebaseRecyclerAdapter<MainApModel,MainApAda
 
 
        //update popup
-
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final DialogPlus dialogPlus = DialogPlus.newDialog(holder.img.getContext())
                         .setContentHolder(new ViewHolder(R.layout.ap_update_popup))
-                        .setExpanded(true,1500)
+                        .setExpanded(true,1300)
                         .create();
-
                 //dialogPlus.show();
-
                 View view = dialogPlus.getHolderView();
 
                 final EditText vehicleNo =view.findViewById(R.id.txtVno);
@@ -70,7 +67,6 @@ public class MainApAdapter extends FirebaseRecyclerAdapter<MainApModel,MainApAda
                 final EditText appointmentDate =view.findViewById(R.id.txtApdate);
                 final EditText appointmentTime =view.findViewById(R.id.txtAptime);
                 final EditText anySpecialInstruction =view.findViewById(R.id.txtAsi);
-
 
                 Button btnUpdate = view.findViewById(R.id.btnUpdate);
 
@@ -80,12 +76,10 @@ public class MainApAdapter extends FirebaseRecyclerAdapter<MainApModel,MainApAda
                 appointmentTime.setText(model.getAppointmentTime());
                 anySpecialInstruction.setText(model.getAnySpecialInstruction());
 
-
-
                 dialogPlus.show();
 
-                //update the details
 
+                //update the details
                 btnUpdate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -95,12 +89,11 @@ public class MainApAdapter extends FirebaseRecyclerAdapter<MainApModel,MainApAda
                         map.put("appointmentDate",appointmentDate.getText().toString());
                         map.put("appointmentTime",appointmentTime.getText().toString());
                         map.put("anySpecialInstruction",anySpecialInstruction.getText().toString());
-
-
-                        FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/").getReference().child("appoinment")
+                        //database connection
+                        FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/").getReference().
+                                child("appoinment")
                                 .child(Objects.requireNonNull(getRef(position).getKey())).updateChildren(map)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {@Override
                                     public void onSuccess(Void unused) {
                                         Toast.makeText(holder.vehicleNo.getContext(), "Data Updated Successfully", Toast.LENGTH_SHORT).show();
                                         dialogPlus.dismiss();
@@ -111,16 +104,16 @@ public class MainApAdapter extends FirebaseRecyclerAdapter<MainApModel,MainApAda
                                     public void onFailure( Exception e) {
                                         Toast.makeText(holder.vehicleNo.getContext(), "Error while Updating ", Toast.LENGTH_SHORT).show();
                                         dialogPlus.dismiss();
-
                                     }
                                 });
-                    }
+                         }
                 });
 
 
             }
         });
 
+        //Delete
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,12 +125,12 @@ public class MainApAdapter extends FirebaseRecyclerAdapter<MainApModel,MainApAda
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
 
-                        FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/").getReference().child("appoinment")
+                        FirebaseDatabase.getInstance("https://carserviceapp-fb926-default-rtdb.firebaseio.com/")
+                                .getReference().child("appoinment")
                                 .child(Objects.requireNonNull(getRef(position).getKey())).removeValue();
 
-                    }
+                     }
                 });
-
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
